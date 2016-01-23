@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from rosequinn.views import HomePage
 from computers import urls as computers_urls
 
 urlpatterns = [
+    url(r'^$', HomePage.as_view(), name='home'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^computers/', include(computers_urls)),
+#     url(r'^', include('django.contrib.auth.urls')),
+#     url(r'^computers/', include(computers_urls)),
 ]

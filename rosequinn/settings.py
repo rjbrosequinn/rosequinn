@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'computers',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -59,7 +60,10 @@ ROOT_URLCONF = 'rosequinn.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR,'rosequinn/templates'),
+            os.path.join(BASE_DIR,'computers/templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -108,4 +112,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/static'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_MAIN_APP = os.path.join(BASE_DIR,'rosequinn', 'static')
+STATIC_COMPUTERS_APP = os.path.join(BASE_DIR,'computers', 'static')
+STATICFILES_DIRS = (
+    STATIC_MAIN_APP,
+    STATIC_COMPUTERS_APP 
+)
+print(STATICFILES_DIRS)
